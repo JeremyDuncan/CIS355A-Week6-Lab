@@ -45,7 +45,7 @@ public class GradeManagement extends javax.swing.JFrame {
         lblTest3 = new javax.swing.JLabel();
         txtTest3 = new javax.swing.JTextField();
         btnDisplayAll = new javax.swing.JButton();
-        btnAddStudent1 = new javax.swing.JButton();
+        btnAddStudent = new javax.swing.JButton();
         scrStudents = new javax.swing.JScrollPane();
         txaStudents = new javax.swing.JTextArea();
         scrStudentsTable = new javax.swing.JScrollPane();
@@ -69,11 +69,6 @@ public class GradeManagement extends javax.swing.JFrame {
         lblTest2.setText("Test 2:");
 
         txtTest2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        txtTest2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTest2ActionPerformed(evt);
-            }
-        });
 
         lblTest3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         lblTest3.setText("Test 3:");
@@ -83,9 +78,15 @@ public class GradeManagement extends javax.swing.JFrame {
         btnDisplayAll.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         btnDisplayAll.setText("Display All");
 
-        btnAddStudent1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        btnAddStudent1.setText("Add Student");
+        btnAddStudent.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        btnAddStudent.setText("Add Student");
+        btnAddStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStudentActionPerformed(evt);
+            }
+        });
 
+        txaStudents.setEditable(false);
         txaStudents.setColumns(20);
         txaStudents.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         txaStudents.setRows(5);
@@ -132,7 +133,7 @@ public class GradeManagement extends javax.swing.JFrame {
                                 .addComponent(txtTest2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
-                                .addComponent(btnAddStudent1)
+                                .addComponent(btnAddStudent)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDisplayAll))
                             .addGroup(layout.createSequentialGroup()
@@ -168,7 +169,7 @@ public class GradeManagement extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDisplayAll)
-                            .addComponent(btnAddStudent1))))
+                            .addComponent(btnAddStudent))))
                 .addGap(18, 18, 18)
                 .addComponent(scrStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -179,9 +180,17 @@ public class GradeManagement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTest2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTest2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTest2ActionPerformed
+    private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
+        // get student info
+        
+        //create student
+        
+        //add student to database
+        //using StudentDB object
+        
+        
+        
+    }//GEN-LAST:event_btnAddStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,7 +228,7 @@ public class GradeManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddStudent1;
+    private javax.swing.JButton btnAddStudent;
     private javax.swing.JButton btnDisplayAll;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblName;
