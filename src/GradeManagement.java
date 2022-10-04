@@ -1,3 +1,10 @@
+
+import java.awt.Color;
+
+
+
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +21,10 @@ public class GradeManagement extends javax.swing.JFrame {
      */
     public GradeManagement() {
         initComponents();
+        
+        // center the form
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     /**
@@ -25,22 +36,130 @@ public class GradeManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        lblTest1 = new javax.swing.JLabel();
+        txtTest1 = new javax.swing.JTextField();
+        lblTest2 = new javax.swing.JLabel();
+        txtTest2 = new javax.swing.JTextField();
+        lblTest3 = new javax.swing.JLabel();
+        txtTest3 = new javax.swing.JTextField();
+        btnDisplayAll = new javax.swing.JButton();
+        btnAddStudent1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaStudents = new javax.swing.JTextArea();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grade Management System");
+
+        lblName.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblName.setText("Name:");
+
+        txtName.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+
+        lblTest1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblTest1.setText("Test 1:");
+
+        txtTest1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+
+        lblTest2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblTest2.setText("Test 2:");
+
+        txtTest2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txtTest2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTest2ActionPerformed(evt);
+            }
+        });
+
+        lblTest3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblTest3.setText("Test 3:");
+
+        txtTest3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+
+        btnDisplayAll.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        btnDisplayAll.setText("Display All");
+
+        btnAddStudent1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        btnAddStudent1.setText("Add Student");
+
+        txaStudents.setColumns(20);
+        txaStudents.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txaStudents.setRows(5);
+        jScrollPane1.setViewportView(txaStudents);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTest3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtTest3, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTest2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtTest2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblTest1)
+                                            .addComponent(lblName))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                            .addComponent(txtTest1)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(btnAddStudent1)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDisplayAll)))
+                        .addGap(0, 329, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTest1)
+                    .addComponent(txtTest1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTest2)
+                    .addComponent(txtTest2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTest3)
+                    .addComponent(txtTest3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDisplayAll)
+                    .addComponent(btnAddStudent1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(366, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtTest2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTest2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTest2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +197,17 @@ public class GradeManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddStudent1;
+    private javax.swing.JButton btnDisplayAll;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblTest1;
+    private javax.swing.JLabel lblTest2;
+    private javax.swing.JLabel lblTest3;
+    private javax.swing.JTextArea txaStudents;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtTest1;
+    private javax.swing.JTextField txtTest2;
+    private javax.swing.JTextField txtTest3;
     // End of variables declaration//GEN-END:variables
 }
