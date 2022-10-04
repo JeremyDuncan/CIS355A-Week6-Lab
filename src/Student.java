@@ -33,7 +33,27 @@ public class Student {
     // behaviors
     @Override
     public String toString() {
-        return "Student{" + "name=" + name + ", test1=" + test1 + ", test2=" + test2 + ", test3=" + test3 + '}';
+        return name;
+    }
+
+    public double calculateAverage() {
+        return (test1 + test2 + test3) / 3.0;
+    }
+
+    public String calculateLetterGrade() {
+        double avg = calculateAverage();
+        
+        if(avg >= 9.0) {
+            return "A";
+        }else if (avg >= 80) {
+            return "B";
+        }else if (avg >= 70) {
+            return "C";
+        }else if (avg >= 60) {
+            return "D";
+        }else {
+            return "F";
+        }
     }
 
     // getters & setters
