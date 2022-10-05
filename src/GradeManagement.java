@@ -1,15 +1,14 @@
 
 import java.awt.Color;
-
-
-
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Jeremy Duncan
@@ -21,7 +20,7 @@ public class GradeManagement extends javax.swing.JFrame {
      */
     public GradeManagement() {
         initComponents();
-        
+
         // center the form
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.DARK_GRAY);
@@ -118,11 +117,7 @@ public class GradeManagement extends javax.swing.JFrame {
                     .addComponent(scrStudents)
                     .addComponent(scrStudentsTable)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtName))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTest3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -137,10 +132,14 @@ public class GradeManagement extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDisplayAll))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTest1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTest1)
+                                    .addComponent(lblName))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTest1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtName)
+                                    .addComponent(txtTest1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -182,14 +181,35 @@ public class GradeManagement extends javax.swing.JFrame {
 
     private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
         // get student info
-        
+        String stuName = txtName.getText();
+        double test1 = Double.parseDouble(txtTest1.getText());
+        double test2 = Double.parseDouble(txtTest2.getText());
+        double test3 = Double.parseDouble(txtTest3.getText());
+
         //create student
-        
+        Student stu = new Student(stuName, test1, test2, test3);
+
         //add student to database
-        //using StudentDB object
-        
-        
-        
+        StudentDB db = new StudentDB();
+        try {
+            db.add(stu);
+            JOptionPane.showMessageDialog(this, "Record was written to the database.");
+
+            // clear the form
+            txtName.setText("");
+            txtTest1.setText("");
+            txtTest2.setText("");
+            txtTest3.setText("");
+            txtName.requestFocus(); // puts curser on name field
+
+            //using StudentDB object
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btnAddStudentActionPerformed
 
     /**

@@ -42,16 +42,16 @@ public class Student {
 
     public String calculateLetterGrade() {
         double avg = calculateAverage();
-        
-        if(avg >= 9.0) {
+
+        if (avg >= 9.0) {
             return "A";
-        }else if (avg >= 80) {
+        } else if (avg >= 80) {
             return "B";
-        }else if (avg >= 70) {
+        } else if (avg >= 70) {
             return "C";
-        }else if (avg >= 60) {
+        } else if (avg >= 60) {
             return "D";
-        }else {
+        } else {
             return "F";
         }
     }
