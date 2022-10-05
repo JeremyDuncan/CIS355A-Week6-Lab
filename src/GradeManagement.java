@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -213,7 +214,7 @@ public class GradeManagement extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(), 
+            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(),
                     "Driver Not Found", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -230,16 +231,48 @@ public class GradeManagement extends javax.swing.JFrame {
         try {
             ArrayList<Student> data = db.getAll();
             DecimalFormat fmt = new DecimalFormat("0.0");
-            
+
             for (int i = 0; i < data.size(); i++) {
                 Student stu = data.get(i);
-                txaStudents.append(stu.getName() + "\t" + stu.getTest1() + "\t" + stu.getTest2() + "\t"+ stu.getTest3() + "\t" + fmt.format (stu.calculateAverage()) + "\t" + stu.calculateLetterGrade() + "\n");
+                txaStudents.append(stu.getName() + "\t" + stu.getTest1() + "\t" + stu.getTest2() + "\t" + stu.getTest3() + "\t" + fmt.format(stu.calculateAverage()) + "\t" + stu.calculateLetterGrade() + "\n");
             }
-            
+
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(), 
+            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(),
+                    "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+        }
+
+        //======================================================================
+        // Display records on a JTable
+        //======================================================================
+        // Show headings
+        DefaultTableModel tblModel = new DefaultTableModel();
+        tblStudents.setModel(tblModel);
+
+        String[] colTitles = {"Name", "Test1", "Test2", "Test3", "Average", "Grade"};
+        tblModel.setColumnIdentifiers(colTitles);
+
+        // read the student records
+        StudentDB db2 = new StudentDB();
+        DecimalFormat fmt2 = new DecimalFormat("0.0");
+
+        try {
+            ArrayList<Student> records = db2.getAll();
+            for (int i = 0; i < records.size(); i++) {
+                Student stu = records.get(i);
+
+                Object[] row = {stu.getName(), stu.getTest1(), stu.getTest2(), stu.getTest3(), 
+                fmt2.format(stu.calculateAverage()),
+                stu.calculateLetterGrade()};
+
+                tblModel.addRow(row);
+            }
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(),
                     "Driver Not Found", JOptionPane.ERROR_MESSAGE);
         }
 
