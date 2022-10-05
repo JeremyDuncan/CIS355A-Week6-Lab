@@ -1,6 +1,8 @@
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -76,6 +78,11 @@ public class GradeManagement extends javax.swing.JFrame {
 
         btnDisplayAll.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         btnDisplayAll.setText("Display All");
+        btnDisplayAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisplayAllActionPerformed(evt);
+            }
+        });
 
         btnAddStudent.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         btnAddStudent.setText("Add Student");
@@ -87,7 +94,7 @@ public class GradeManagement extends javax.swing.JFrame {
 
         txaStudents.setEditable(false);
         txaStudents.setColumns(20);
-        txaStudents.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txaStudents.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txaStudents.setRows(5);
         scrStudents.setViewportView(txaStudents);
 
@@ -187,7 +194,7 @@ public class GradeManagement extends javax.swing.JFrame {
         double test3 = Double.parseDouble(txtTest3.getText());
 
         //create student
-        Student stu = new Student(stuName, test1, test2, test3);
+        Student stu = new Student(0, stuName, test1, test2, test3);
 
         //add student to database
         StudentDB db = new StudentDB();
@@ -206,11 +213,37 @@ public class GradeManagement extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(), 
+                    "Driver Not Found", JOptionPane.ERROR_MESSAGE);
         }
 
 
     }//GEN-LAST:event_btnAddStudentActionPerformed
+
+    private void btnDisplayAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayAllActionPerformed
+        // Show output heading in the text area
+        txaStudents.setText("Name" + "\t" + "Test1" + "\t" + "Test2" + "\t"
+                + "Test3" + "\t" + "Average" + "\t" + "Grade" + "\n");
+
+        // Read the student records
+        StudentDB db = new StudentDB();
+        try {
+            ArrayList<Student> data = db.getAll();
+            DecimalFormat fmt = new DecimalFormat("0.0");
+            
+            for (int i = 0; i < data.size(); i++) {
+                Student stu = data.get(i);
+                txaStudents.append(stu.getName() + "\t" + stu.getTest1() + "\t" + stu.getTest2() + "\t"+ stu.getTest3() + "\t" + fmt.format (stu.calculateAverage()) + "\t" + stu.calculateLetterGrade() + "\n");
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Error. Database driver not found.", "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Database Error:" + ex.getMessage(), 
+                    "Driver Not Found", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnDisplayAllActionPerformed
 
     /**
      * @param args the command line arguments

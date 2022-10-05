@@ -10,6 +10,7 @@
 public class Student {
 
     // attributes
+    private int id;
     private String name;
     private double test1;
     private double test2;
@@ -17,13 +18,15 @@ public class Student {
 
     // constructors
     public Student() {
+        this.id = 0;
         this.name = "unknown";
         this.test1 = 0.0;
         this.test2 = 0.0;
         this.test3 = 0.0;
     }
 
-    public Student(String name, double test1, double test2, double test3) {
+    public Student(int id, String name, double test1, double test2, double test3) {
+        this.id = id;
         this.name = name;
         this.test1 = test1;
         this.test2 = test2;
@@ -43,7 +46,7 @@ public class Student {
     public String calculateLetterGrade() {
         double avg = calculateAverage();
 
-        if (avg >= 9.0) {
+        if (avg >= 90) {
             return "A";
         } else if (avg >= 80) {
             return "B";
@@ -57,36 +60,34 @@ public class Student {
     }
 
     // getters & setters
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public double getTest1() {
         return test1;
     }
-
     public void setTest1(double test1) {
         this.test1 = test1;
     }
-
     public double getTest2() {
         return test2;
     }
-
     public void setTest2(double test2) {
         this.test2 = test2;
     }
-
     public double getTest3() {
         return test3;
     }
-
     public void setTest3(double test3) {
         this.test3 = test3;
     }
-
 }
